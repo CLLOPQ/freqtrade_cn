@@ -1,0 +1,118 @@
+# Freqtrade 规则
+config*.json
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal
+logfile.txt
+user_data/*
+!user_data/strategy/sample_strategy.py
+!user_data/notebooks
+!user_data/models
+!user_data/freqaimodels
+user_data/freqaimodels/*
+user_data/models/*
+user_data/notebooks/*
+freqtrade-plot.html
+freqtrade-profit-plot.html
+freqtrade/rpc/api_server/ui/*
+build_helpers/ta-lib/*
+
+# Macos 相关
+.DS_Store
+
+# 字节编译/优化/DLL文件
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C 扩展
+*.so
+
+# 分发/打包
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# PyInstaller
+# 通常这些文件是由python脚本从模板编写的
+# 在PyInstaller构建exe之前，以便向其中注入日期/其他信息。
+*.manifest
+*.spec
+
+# 安装程序日志
+pip-log.txt
+pip-delete-this-directory.txt
+
+# 单元测试/覆盖率报告
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+# 翻译
+*.mo
+*.pot
+
+# Django 相关:
+*.log
+local_settings.py
+
+# Flask 相关:
+instance/
+.webassets-cache
+
+# Scrapy 相关:
+.scrapy
+
+# memray
+memray-*
+
+# Sphinx 文档
+docs/_build/
+# Mkdocs 文档
+site/
+
+# PyBuilder
+target/
+
+# Jupyter Notebook
+*.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+.env
+.venv
+.idea
+.vscode
+
+.pytest_cache/
+.mypy_cache/
+
+# 例外
+!*.gitkeep
+!config_examples/config_binance.example.json
+!config_examples/config_full.example.json
+!config_examples/config_kraken.example.json
+!config_examples/config_freqai.example.json
+
+docker-compose-*.yml

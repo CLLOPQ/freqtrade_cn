@@ -1,0 +1,87 @@
+# 参见 https://pre-commit.com 了解更多信息
+# 参见 https://pre-commit.com/hooks.html 了解更多钩子
+repos:
+
+  - repo: local
+    # 保持 json 模式与配置模式同步
+    # 这将写入文件 - 如果文件已更改，pre-commit 将失败。
+    hooks:
+      - id: Extract config json schema
+        name: extract-config-json-schema
+        entry: "python build_helpers/extract_config_json_schema.py"
+        language: python
+        pass_filenames: false
+        additional_dependencies: ["python-rapidjson", "jsonschema"]
+
+  - repo: https://github.com/pycqa/flake8
+    rev: "7.3.0"
+    hooks:
+      - id: flake8
+        additional_dependencies: [Flake8-pyproject]
+        # stages: [push]
+
+  - repo: https://github.com/pre-commit/mirrors-mypy
+    rev: "v1.16.1"
+    hooks:
+      - id: mypy
+        exclude: build_helpers
+        additional_dependencies:
+          - types-cachetools==6.0.0.20250525
+          - types-filelock==3.2.7
+          - types-requests==2.32.4.20250611
+          - types-tabulate==0.9.0.20241207
+          - types-python-dateutil==2.9.0.20250516
+          - SQLAlchemy==2.0.41
+        # stages: [push]
+
+  - repo: https://github.com/pycqa/isort
+    rev: "6.0.1"
+    hooks:
+      - id: isort
+        name: isort (python)
+        # stages: [push]
+
+  - repo: https://github.com/charliermarsh/ruff-pre-commit
+    # Ruff 版本。
+    rev: 'v0.12.1'
+    hooks:
+      - id: ruff
+      - id: ruff-format
+
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: end-of-file-fixer
+        exclude: |
+            (?x)^(
+                tests/.*|
+                .*\.svg|
+                .*\.yml|
+                .*\.json
+            )$
+      - id: mixed-line-ending
+      - id: debug-statements
+      - id: check-ast
+      - id: trailing-whitespace
+        exclude: |
+          (?x)^(
+                .*\.md
+            )$
+
+  - repo: https://github.com/stefmolin/exif-stripper
+    rev: 1.0.0
+    hooks:
+      - id: strip-exif
+
+  - repo: https://github.com/codespell-project/codespell
+    rev: v2.4.1
+    hooks:
+    - id: codespell
+      additional_dependencies:
+        - tomli
+
+  # 确保 github 动作保持安全
+  - repo: https://github.com/woodruffw/zizmor-pre-commit
+    rev: v1.11.0
+    hooks:
+    - id: zizmor
