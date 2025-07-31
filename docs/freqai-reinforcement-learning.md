@@ -1,1 +1,0 @@
-freqtrade trade --freqaimodel ReinforcementLearner --strategy MyRLStrategy --config config.json

@@ -1,4 +1,0 @@
-# 包含运行机器人所需的所有依赖项
--r requirements.txt
-
-plotly==6.2.0

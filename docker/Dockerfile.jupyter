@@ -1,8 +1,0 @@
-FROM freqtradeorg/freqtrade:develop_plot
-
-
-# 固定prompt-toolkit版本以避免与questionary发生版本冲突
-RUN pip install jupyterlab "prompt-toolkit<=3.0.36" jupyter-client --user --no-cache-dir
-
-# 清空ENTRYPOINT以允许所有命令
-ENTRYPOINT []

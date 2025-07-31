@@ -1,1 +1,0 @@
-freqtrade download-data --exchange binance
