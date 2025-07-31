@@ -1,0 +1,34 @@
+---
+services:
+  freqtrade:
+    image: freqtradeorg/freqtrade:stable_freqaitorch
+    # # 启用GPU镜像和GPU资源
+    # # 确保取消整个deploy部分的注释
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: 1
+    #           capabilities: [gpu]
+
+    # 构建步骤 - 仅在需要额外依赖时使用
+    # build:
+    #   context: .
+    #   dockerfile: "./docker/Dockerfile.custom"
+    restart: unless-stopped
+    container_name: freqtrade
+    volumes:
+      - "./user_data:/freqtrade/user_data"
+    # 在8080端口暴露API（仅本地访问）
+    # 更多信息请阅读https://www.freqtrade.io/en/stable/rest-api/文档
+    ports:
+      - "127.0.0.1:8080:8080"
+    # 运行`docker compose up`时使用的默认命令
+    command: >
+      trade
+      --logfile /freqtrade/user_data/logs/freqtrade.log
+      --db-url sqlite:////freqtrade/user_data/tradesv3.sqlite
+      --config /freqtrade/user_data/config.json
+      --freqaimodel XGBoostRegressor
+      --strategy FreqaiExampleStrategy
