@@ -1,0 +1,31 @@
+```ini
+[Unit]
+Description=Freqtrade 守护进程
+After=network.target
+
+[Service]
+# 根据实际情况设置 WorkingDirectory 和 ExecStart 的文件路径
+# 注意：%h 会被解析为 /home/<用户名>
+WorkingDirectory=%h/freqtrade
+ExecStart=/usr/bin/freqtrade trade --sd-notify
+
+Restart=always
+#Restart=on-failure（失败时重启，可按需启用）
+
+# 注意：此处我们使用 Type=notify
+Type=notify
+
+# 目前 Type=notify 模式下需要设置此项
+NotifyAccess=all
+
+StartLimitInterval=1min
+StartLimitBurst=5
+
+TimeoutStartSec=1min
+
+# 使用（process_throttle_secs * 2）或更长的时间间隔
+WatchdogSec=20
+
+[Install]
+WantedBy=default.target
+```

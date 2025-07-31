@@ -1,0 +1,135 @@
+site_name: Freqtrade
+site_url: !ENV [READTHEDOCS_CANONICAL_URL, 'https://www.freqtrade.io/zh/']
+site_description: Freqtrade 是一个免费开源的加密货币交易机器人，采用 Python 编写，支持所有主流交易所，可通过 Telegram 或内置 Web UI 进行控制
+repo_url: https://github.com/freqtrade/freqtrade
+edit_uri: edit/develop/docs/
+use_directory_urls: True
+nav:
+    - 首页: index.md
+    - Docker 快速入门: docker_quickstart.md
+    - 安装指南:
+        - Linux/MacOS/树莓派: installation.md
+        - Windows: windows_installation.md
+    - Freqtrade 基础: bot-basics.md
+    - 配置说明: configuration.md
+    - 策略快速入门: strategy-101.md
+    - 策略自定义: strategy-customization.md
+    - 策略回调函数: strategy-callbacks.md
+    - 止损设置: stoploss.md
+    - 插件: plugins.md
+    - 启动机器人: bot-usage.md
+    - 控制机器人:
+        - Telegram: telegram-usage.md
+        - freqUI: freq-ui.md
+        - REST API: rest-api.md
+        - Web 钩子: webhook-config.md
+    - 数据下载: data-download.md
+    - 回测: backtesting.md
+    - 超参数优化: hyperopt.md
+    - FreqAI:
+        - 简介: freqai.md
+        - 配置: freqai-configuration.md
+        - 参数表: freqai-parameter-table.md
+        - 特征工程: freqai-feature-engineering.md
+        - 运行 FreqAI: freqai-running.md
+        - 强化学习: freqai-reinforcement-learning.md
+        - 开发者指南: freqai-developers.md
+    - 做空 / 杠杆: leverage.md
+    - 实用子命令: utils.md
+    - 绘图功能: plotting.md
+    - 交易所特定说明: exchanges.md
+    - 数据分析:
+        - Jupyter 笔记本: data-analysis.md
+        - 策略分析: strategy_analysis_example.md
+        - 回测分析: advanced-backtesting.md
+    - 高级主题:
+        - 高级安装后任务: advanced-setup.md
+        - 交易对象: trade-object.md
+        - 前瞻性偏差分析: lookahead-analysis.md
+        - 递归分析: recursive-analysis.md
+        - 高级策略: strategy-advanced.md
+        - 高级超参数优化: advanced-hyperopt.md
+        - 订单流: advanced-orderflow.md
+        - 生产者/消费者模式: producer-consumer.md
+        - SQL 速查表: sql_cheatsheet.md
+    - 常见问题: faq.md
+    - 策略迁移: strategy_migration.md
+    - 更新 Freqtrade: updating.md
+    - 已废弃功能: deprecated.md
+    - 贡献者指南: developer.md
+theme:
+  name: material
+  logo: "images/logo.png"
+  favicon: "images/logo.png"
+  icon:
+    repo: fontawesome/brands/github
+  custom_dir: "docs/overrides"
+  features:
+    - content.code.annotate
+    - search.share
+    - content.code.copy
+    - content.action.edit
+    - navigation.top
+    - navigation.footer
+  palette:
+    - scheme: default
+      primary: "blue grey"
+      accent: "tear"
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: 切换到深色模式
+    - scheme: slate
+      primary: "blue grey"
+      accent: "tear"
+      toggle:
+        icon: material/toggle-switch
+        name: 切换到浅色模式
+extra_css:
+  - "stylesheets/ft.extra.css"
+extra_javascript:
+  - javascripts/config.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+exclude_docs: |
+    /commands/*
+    /includes/*
+markdown_extensions:
+  - attr_list
+  - admonition
+  - footnotes
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.magiclink
+  - pymdownx.pathconverter
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      base_path: docs
+      check_paths: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - mdx_truly_sane_lists
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+extra:
+  version:
+    provider: mike
+    alias: true
+  analytics:
+    provider: google
+    property: G-VH170LG9M5
+plugins:
+  - search:
+      enabled: true
+  - mike:
+      deploy_prefix: 'zh'
+      canonical_version: 'stable'

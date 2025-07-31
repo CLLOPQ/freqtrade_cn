@@ -1,0 +1,1 @@
+dataframe['rsi'] = ta.RSI(dataframe)

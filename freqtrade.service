@@ -1,0 +1,15 @@
+```ini
+[Unit]
+Description=Freqtrade 守护进程
+After=network.target
+
+[Service]
+# 根据实际情况设置 WorkingDirectory 和 ExecStart 的文件路径
+# 注意：%h 会被解析为 /home/<用户名>
+WorkingDirectory=%h/freqtrade
+ExecStart=/usr/bin/freqtrade trade
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+```
