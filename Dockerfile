@@ -1,5 +1,5 @@
 ```dockerfile
-FROM python:3.13.5-slim-bookworm as base
+FROM python:3.13.6-slim-bookworm as base
 
 # 设置环境
 ENV LANG C.UTF-8
